@@ -1,4 +1,4 @@
-import apiConfig from "./config";
+import apiConfig from "./config.js";
 
 const apiEndpoints = {
   mediaList: ({ mediaType, mediaCategory, page }) =>

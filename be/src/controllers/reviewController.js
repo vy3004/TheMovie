@@ -1,5 +1,5 @@
-import responseHandler from "../handlers/responseHandler";
-import reviewModel from "../models/reviewModel";
+import responseHandler from "../handlers/responseHandler.js";
+import reviewModel from "../models/reviewModel.js";
 
 const create = async (req, res) => {
   try {

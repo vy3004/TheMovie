@@ -1,9 +1,9 @@
-import responseHandler from "../handlers/responseHandler";
-import api from "../api/api";
-import tokenMiddleware from "../middleware";
-import userModel from "../models/userModel";
-import favoriteModel from "../models/favoriteModel";
-import reviewModel from "../models/reviewModel";
+import responseHandler from "../handlers/responseHandler.js";
+import api from "../api/api.js";
+import tokenMiddleware from "../middleware.js";
+import userModel from "../models/userModel.js";
+import favoriteModel from "../models/favoriteModel.js";
+import reviewModel from "../models/reviewModel.js";
 
 const getList = async (req, res) => {
   try {

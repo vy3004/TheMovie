@@ -1,5 +1,5 @@
-import axiosConfig from "../axios";
-import apiEndpoints from "./endpoint";
+import axiosConfig from "../axios.js";
+import apiEndpoints from "./endpoint.js";
 
 const api = {
   mediaList: async ({ mediaType, mediaCategory, page }) =>

@@ -1,6 +1,6 @@
 import jsonwebtoken from "jsonwebtoken";
-import responseHandler from "../handlers/responseHandler";
-import userModel from "../models/userModel";
+import responseHandler from "../handlers/responseHandler.js";
+import userModel from "../models/userModel.js";
 
 const register = async (req, res) => {
   try {

@@ -1,9 +1,10 @@
 import express from "express";
-import userModel from "../models/userModel";
-import userController from "../controllers/userController";
-import favoriteController from "../controllers/favoriteController";
-import requestHandler from "../handlers/requestHandler";
-import tokenMiddleware from "../middleware";
+import userModel from "../models/userModel.js";
+import userController from "../controllers/userController.js";
+import favoriteController from "../controllers/favoriteController.js";
+import requestHandler from "../handlers/requestHandler.js";
+import tokenMiddleware from "../middleware.js";
+import { body } from "express-validator";
 
 const router = express.Router();
 
@@ -109,6 +110,7 @@ router.post(
   body("mediaTitle").exists().withMessage("mediaTitle is required"),
   body("mediaPoster").exists().withMessage("mediaPoster is required"),
   body("mediaRate").exists().withMessage("mediaRate is required"),
+  requestHandler.validate,
   favoriteController.addFavorite
 );
 
