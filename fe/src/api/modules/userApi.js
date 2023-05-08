@@ -11,16 +11,14 @@ const userEndpoints = {
 const userApi = {
   login: async ({ username, password }) => {
     try {
-      console.log("send request");
       const response = await publicClient.post(userEndpoints.login, {
         username,
         password,
       });
 
       return { response };
-    } catch (err) {
-      console.log("err");
-      return { err };
+    } catch (error) {
+      return { error };
     }
   },
   register: async ({ username, password, confirmPassword, displayName }) => {
@@ -33,8 +31,8 @@ const userApi = {
       });
 
       return { response };
-    } catch (err) {
-      return { err };
+    } catch (error) {
+      return { error };
     }
   },
   getInfo: async () => {
@@ -42,8 +40,8 @@ const userApi = {
       const response = await privateClient.get(userEndpoints.getInfo);
 
       return { response };
-    } catch (err) {
-      return { err };
+    } catch (error) {
+      return { error };
     }
   },
   passwordUpdate: async ({ password, newPassword, confirmNewPassword }) => {
@@ -55,8 +53,8 @@ const userApi = {
       });
 
       return { response };
-    } catch (err) {
-      return { err };
+    } catch (error) {
+      return { error };
     }
   },
 };
