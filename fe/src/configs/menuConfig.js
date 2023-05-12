@@ -54,6 +54,6 @@ const user = [
   },
 ];
 
-const menuConfigs = { main, user };
+const menuConfig = { main, user };
 
-export default menuConfigs;
+export default menuConfig;

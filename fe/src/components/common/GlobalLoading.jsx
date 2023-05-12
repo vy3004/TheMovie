@@ -6,7 +6,7 @@ import Logo from "./Logo";
 const GlobalLoading = () => {
   const { globalLoading } = useSelector((state) => state.globalLoading);
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (globalLoading) {
@@ -20,7 +20,7 @@ const GlobalLoading = () => {
 
   return (
     <Paper
-      xs={{
+      sx={{
         opacity: isLoading ? 1 : 0,
         pointerEvents: "none",
         transition: "all .3s ease",
