@@ -2,6 +2,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { useSelector } from "react-redux";
 import themeConfig from "./configs/themeConfig";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import routes from "./routes/routes";
 import PageWrapper from "./components/common/PageWrapper";
@@ -13,7 +14,7 @@ const App = () => {
   return (
     <ThemeProvider theme={themeConfig.custom({ mode: themeMode })}>
       <ToastContainer
-        position="bottom-left"
+        position="bottom-right"
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}

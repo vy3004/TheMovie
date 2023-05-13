@@ -4,6 +4,7 @@ import { setAuthModalOpen } from "../../redux/features/authModalSlice";
 import { Box, Modal } from "@mui/material";
 import Logo from "./Logo";
 import LoginForm from "./LoginForm";
+import RegisterForm from "./RegisterForm";
 
 const actionState = {
   login: "login",
@@ -57,7 +58,7 @@ const AuthModal = () => {
             />
           )}
           {action === actionState.register && (
-            <LoginForm
+            <RegisterForm
               switchAuthState={() => switchAuthState(actionState.login)}
             />
           )}

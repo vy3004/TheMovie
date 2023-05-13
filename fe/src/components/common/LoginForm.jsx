@@ -17,7 +17,6 @@ import {
   InputAdornment,
   InputLabel,
   Stack,
-  TextField,
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
@@ -34,8 +33,8 @@ const LoginForm = ({ switchAuthState }) => {
 
   const loginForm = useFormik({
     initialValues: {
-      password: "",
       username: "",
+      password: "",
     },
     validationSchema: Yup.object({
       username: Yup.string()
@@ -66,21 +65,6 @@ const LoginForm = ({ switchAuthState }) => {
   return (
     <Box component="form" onSubmit={loginForm.handleSubmit}>
       <Stack spacing={3}>
-        {/* <TextField
-          type="text"
-          label="Username"
-          variant="filled"
-          name="username"
-          fullWidth
-          value={loginForm.values.username}
-          onChange={loginForm.handleChange}
-          color="success"
-          error={
-            loginForm.touched.username &&
-            loginForm.errors.username !== undefined
-          }
-          helperText={loginForm.touched.username && loginForm.errors.username}
-        /> */}
         <FormControl
           variant="filled"
           fullWidth
@@ -96,6 +80,7 @@ const LoginForm = ({ switchAuthState }) => {
             name="username"
             value={loginForm.values.username}
             onChange={loginForm.handleChange}
+            autoComplete="on"
           />
           <FormHelperText>
             {loginForm.touched.username && loginForm.errors.username}
@@ -116,13 +101,10 @@ const LoginForm = ({ switchAuthState }) => {
             name="password"
             value={loginForm.values.password}
             onChange={loginForm.handleChange}
+            autoComplete="off"
             endAdornment={
               <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  edge="end"
-                >
+                <IconButton onClick={handleClickShowPassword} edge="end">
                   {showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
               </InputAdornment>
