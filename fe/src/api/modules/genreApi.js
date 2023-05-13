@@ -1,13 +1,15 @@
 import publicClient from "../client/publicClient";
 
-const genrePoints = {
+const genreEndpoints = {
   list: ({ mediaType }) => `${mediaType}/genres`,
 };
 
 const genreApi = {
-  list: async ({ mediaType }) => {
+  getList: async ({ mediaType }) => {
     try {
-      const response = await publicClient.get(genrePoints.list({ mediaType }));
+      const response = await publicClient.get(
+        genreEndpoints.list({ mediaType })
+      );
 
       return { response };
     } catch (error) {

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  Avatar,
   ListItemButton,
   ListItemIcon,
   ListItemText,
@@ -25,13 +26,17 @@ const UserMenu = () => {
     <>
       {user && (
         <>
-          <Typography
-            variant="h6"
-            sx={{ cursor: "pointer", userSelect: "none" }}
+          <Avatar
+            variant="rounded"
+            sx={{
+              cursor: "pointer",
+              bgcolor: "primary.main",
+              fontWeight: "bold",
+            }}
             onClick={toggleMenu}
           >
-            {user.displayName}
-          </Typography>
+            {user.displayName?.charAt(0)?.toUpperCase()}
+          </Avatar>
 
           <Menu
             open={Boolean(anchorEl)}

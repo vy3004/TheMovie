@@ -131,10 +131,15 @@ const Sidebar = ({ open, toggleSidebar }) => {
       open={open}
       onClose={() => toggleSidebar(false)}
       sx={{
-        "& .MuiDrawer-Paper": {
+        "& .MuiDrawer-paper": {
           boxSizing: "border-box",
           width: sidebarWidth,
           borderRight: "0px",
+          "&::-webkit-scrollbar": { width: "0.2rem" },
+          "&::-webkit-scrollbar-thumb": {
+            backgroundColor: "text.secondary",
+            borderRadius: "10px",
+          },
         },
       }}
     >

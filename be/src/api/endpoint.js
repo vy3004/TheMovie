@@ -2,12 +2,12 @@ import apiConfig from "./config.js";
 
 const apiEndpoints = {
   mediaList: ({ mediaType, mediaCategory, page }) =>
-    apiConfig.getUrl(`${mediaType}/${mediaCategory}`, page),
+    apiConfig.getUrl(`${mediaType}/${mediaCategory}`, { page }),
 
   mediaDetail: ({ mediaType, mediaId }) =>
     apiConfig.getUrl(`${mediaType}/${mediaId}`),
 
-  mediaGenres: ({ mediaType }) => apiConfig.getUrl(`${mediaType}/list`),
+  mediaGenres: ({ mediaType }) => apiConfig.getUrl(`genre/${mediaType}/list`),
 
   mediaCredits: ({ mediaType, mediaId }) =>
     apiConfig.getUrl(`${mediaType}/${mediaId}/credits`),

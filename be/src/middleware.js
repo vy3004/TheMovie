@@ -19,11 +19,11 @@ const tokenDecode = (req) => {
 };
 
 const auth = async (req, res, next) => {
-  const tokenDecode = tokenDecode(req);
+  const td = tokenDecode(req);
 
-  if (!tokenDecode) return responseHandler.unauthorized(res);
+  if (!td) return responseHandler.unauthorized(res);
 
-  const user = await userModel.findById(tokenDecode.data);
+  const user = await userModel.findById(td.data);
 
   if (!user) return responseHandler.unauthorized(res);
 

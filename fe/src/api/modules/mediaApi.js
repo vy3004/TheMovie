@@ -1,3 +1,4 @@
+import privateClient from "../client/privateClient";
 import publicClient from "../client/publicClient";
 
 const mediaEndpoints = {
@@ -5,7 +6,7 @@ const mediaEndpoints = {
     `${mediaType}/${mediaCategory}?page=${page}`,
   detail: ({ mediaType, mediaId }) => `${mediaType}/detail/${mediaId}`,
   search: ({ mediaType, query, page }) =>
-    `${mediaType}search?query=${query}&page=${page}`,
+    `${mediaType}/search?query=${query}&page=${page}`,
 };
 
 const mediaApi = {
@@ -22,7 +23,7 @@ const mediaApi = {
   },
   getDetail: async ({ mediaType, mediaId }) => {
     try {
-      const response = await publicClient.get(
+      const response = await privateClient.get(
         mediaEndpoints.detail({ mediaType, mediaId })
       );
 
