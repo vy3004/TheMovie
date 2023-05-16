@@ -20,7 +20,7 @@ const themeConfig = {
               contrastText: "#ffffff",
             },
             background: {
-              default: "#000000",
+              default: "#0C0C0C",
               paper: "#131313",
             },
           }
