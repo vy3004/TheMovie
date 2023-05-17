@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Box, LinearProgress, Paper, Toolbar } from "@mui/material";
-import Logo from "./Logo";
+import { Box, LinearProgress, Paper, Skeleton, Toolbar } from "@mui/material";
+import uiConfig from "../../configs/uiConfig";
+import AutoSwiper from "./AutoSwiper";
+import { SwiperSlide } from "swiper/react";
 
 const GlobalLoading = () => {
   const { globalLoading } = useSelector((state) => state.globalLoading);
 
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (globalLoading) {
@@ -32,15 +34,25 @@ const GlobalLoading = () => {
     >
       <Toolbar />
       <LinearProgress />
-      <Box
-        sx={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-        }}
-      >
-        <Logo />
+      <Box sx={{ ...uiConfig.style.mainContent }}>
+        <Skeleton variant="rounded" width="15vw" height={30} animation="wave" />
+        <AutoSwiper>
+          <SwiperSlide>
+            <Skeleton variant="rounded" height="20rem" animation="wave" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Skeleton variant="rounded" height="20rem" animation="wave" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Skeleton variant="rounded" height="20rem" animation="wave" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Skeleton variant="rounded" height="20rem" animation="wave" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Skeleton variant="rounded" height="20rem" animation="wave" />
+          </SwiperSlide>
+        </AutoSwiper>
       </Box>
     </Paper>
   );

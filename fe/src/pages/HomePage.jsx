@@ -14,7 +14,7 @@ const HomePage = () => {
         mediaCategory={apiConfig.mediaCategory.popular}
       />
 
-      <Box sx={{ ...uiConfig.style.mainContent, marginTop: "-4rem" }}>
+      <Box sx={{ ...uiConfig.style.mainContent, marginTop: "-3rem" }}>
         <Container header="Popular movies">
           <MediaSlide
             mediaType={apiConfig.mediaType.movie}
