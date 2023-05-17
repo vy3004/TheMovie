@@ -1,6 +1,6 @@
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box, IconButton, Stack, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import PlayCircleOutlineRoundedIcon from "@mui/icons-material/PlayCircleOutlineRounded";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CircularRate from "./CircularRate";
@@ -13,14 +13,11 @@ import favoriteUtil from "../../utils/favoriteUtil";
 const MediaItem = ({ media, mediaType, genres }) => {
   const { listFavorites } = useSelector((state) => state.user);
 
-  const [title, setTitle] = useState("");
   const [posterPath, setPosterPath] = useState("");
   const [releaseDate, setReleaseDate] = useState(null);
   const [rate, setRate] = useState(null);
 
   useEffect(() => {
-    setTitle(media.title || media.name || media.mediaTitle);
-
     setPosterPath(
       apiConfig.posterPath(
         media.poster_path ||
@@ -56,6 +53,11 @@ const MediaItem = ({ media, mediaType, genres }) => {
           "&:hover": { transform: "scale(1.04)", zIndex: 999 },
           "&:hover .media-info": { opacity: 1, bottom: 0 },
           "&:hover .media-back-drop, &:hover .media-play-btn": { opacity: 1 },
+          WebkitUserDrag: "none",
+          KhtmlUserDrag: "none",
+          MozUserDrag: "none",
+          OUserDrag: "none",
+          UserDrag: "none",
           color: "primary.contrastText",
           borderRadius: "10px",
           boxShadow:
@@ -90,21 +92,20 @@ const MediaItem = ({ media, mediaType, genres }) => {
                   "linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0))",
               }}
             />
-            {/* <Button
+            <IconButton
               className="media-play-btn"
-              variant="contained"
-              startIcon={<PlayArrowIcon />}
               sx={{
-                display: { xs: "none", md: "flex" },
                 opacity: 0,
                 transition: "all 0.3s ease",
                 position: "absolute",
                 top: "50%",
                 left: "50%",
                 transform: "translate(-50%, -50%)",
-                "& .MuiButton-startIcon": { marginRight: "-4px" },
+                color: "white",
               }}
-            /> */}
+            >
+              <PlayCircleOutlineRoundedIcon sx={{ fontSize: "5rem" }} />
+            </IconButton>
             <Box
               className="media-info"
               sx={{
@@ -116,6 +117,9 @@ const MediaItem = ({ media, mediaType, genres }) => {
                 height: "max-content",
                 boxSizing: "border-box",
                 padding: { xs: "10px", md: "2rem 1rem" },
+                WebkitUserSelect: "none",
+                MsUserSelect: "none",
+                UserSelect: "none",
               }}
             >
               <Stack spacing={{ xs: 1, md: 2 }}>
@@ -123,18 +127,7 @@ const MediaItem = ({ media, mediaType, genres }) => {
 
                 <Typography>{releaseDate}</Typography>
 
-                {/* <Typography
-                  variant="body1"
-                  fontWeight="700"
-                  sx={{
-                    fontSize: "1rem",
-                    ...uiConfig.style.typoLines(1, "left"),
-                  }}
-                >
-                  {title}
-                </Typography> */}
-
-                <Typography>
+                <Typography sx={{ fontStyle: "italic" }}>
                   {[...media.genre_ids]
                     .splice(0, 2)
                     .map(
