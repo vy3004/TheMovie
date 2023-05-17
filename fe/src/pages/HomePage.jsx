@@ -14,7 +14,7 @@ const HomePage = () => {
         mediaCategory={apiConfig.mediaCategory.popular}
       />
 
-      <Box marginTop="-4rem" sx={{ ...uiConfig.style.mainContent }}>
+      <Box sx={{ ...uiConfig.style.mainContent, marginTop: "-4rem" }}>
         <Container header="Popular movies">
           <MediaSlide
             mediaType={apiConfig.mediaType.movie}
@@ -23,7 +23,7 @@ const HomePage = () => {
         </Container>
       </Box>
 
-      <Box marginTop="-4rem" sx={{ ...uiConfig.style.mainContent }}>
+      <Box sx={{ ...uiConfig.style.mainContent }}>
         <Container header="Popular series">
           <MediaSlide
             mediaType={apiConfig.mediaType.tv}
@@ -32,7 +32,7 @@ const HomePage = () => {
         </Container>
       </Box>
 
-      <Box marginTop="-4rem" sx={{ ...uiConfig.style.mainContent }}>
+      <Box sx={{ ...uiConfig.style.mainContent }}>
         <Container header="Top rated movies">
           <MediaSlide
             mediaType={apiConfig.mediaType.movie}
@@ -41,7 +41,7 @@ const HomePage = () => {
         </Container>
       </Box>
 
-      <Box marginTop="-4rem" sx={{ ...uiConfig.style.mainContent }}>
+      <Box sx={{ ...uiConfig.style.mainContent }}>
         <Container header="Top rated series">
           <MediaSlide
             mediaType={apiConfig.mediaType.tv}

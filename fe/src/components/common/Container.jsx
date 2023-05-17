@@ -6,7 +6,7 @@ const Container = ({ header, children }) => {
     <Box
       sx={{
         position: "relative",
-        marginTop: "5rem",
+        marginTop: "4rem",
         marginX: "auto",
         color: "text.primary",
         "&::before": {

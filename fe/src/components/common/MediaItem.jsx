@@ -1,9 +1,9 @@
-import { Box, IconButton, Stack, Typography } from "@mui/material";
+import { Box, IconButton, Rating, Stack, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import StarIcon from "@mui/icons-material/Star";
 import PlayCircleOutlineRoundedIcon from "@mui/icons-material/PlayCircleOutlineRounded";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import CircularRate from "./CircularRate";
 import apiConfig from "../../api/configs/apiConfig";
 import { useSelector } from "react-redux";
 import uiConfig from "../../configs/uiConfig";
@@ -13,11 +13,14 @@ import favoriteUtil from "../../utils/favoriteUtil";
 const MediaItem = ({ media, mediaType, genres }) => {
   const { listFavorites } = useSelector((state) => state.user);
 
+  const [title, setTitle] = useState("");
   const [posterPath, setPosterPath] = useState("");
   const [releaseDate, setReleaseDate] = useState(null);
   const [rate, setRate] = useState(null);
 
   useEffect(() => {
+    setTitle(media.title || media.name || media.mediaTitle);
+
     setPosterPath(
       apiConfig.posterPath(
         media.poster_path ||
@@ -77,6 +80,7 @@ const MediaItem = ({ media, mediaType, genres }) => {
                 }}
               />
             )}
+
             <Box
               className="media-back-drop"
               sx={{
@@ -92,6 +96,7 @@ const MediaItem = ({ media, mediaType, genres }) => {
                   "linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0))",
               }}
             />
+
             <IconButton
               className="media-play-btn"
               sx={{
@@ -122,20 +127,44 @@ const MediaItem = ({ media, mediaType, genres }) => {
                 UserSelect: "none",
               }}
             >
-              <Stack spacing={{ xs: 1, md: 2 }}>
-                {rate && <CircularRate value={rate} />}
+              <Stack spacing={{ xs: 1, md: 1 }}>
+                <Stack direction="row" justifyContent="space-between">
+                  <Typography
+                    variant="body1"
+                    fontWeight="700"
+                    sx={{
+                      fontSize: "1rem",
+                      ...uiConfig.style.typoLines(1, "left"),
+                    }}
+                  >
+                    {title}
+                  </Typography>
 
-                <Typography>{releaseDate}</Typography>
+                  <Typography sx={{ fontStyle: "italic" }}>
+                    ({releaseDate})
+                  </Typography>
+                </Stack>
+
+                <Rating
+                  value={rate / 2}
+                  precision={0.1}
+                  size="small"
+                  emptyIcon={
+                    <StarIcon style={{ color: "grey" }} fontSize="inherit" />
+                  }
+                  readOnly
+                />
 
                 <Typography sx={{ fontStyle: "italic" }}>
-                  {[...media.genre_ids]
-                    .splice(0, 2)
-                    .map(
-                      (genreId) =>
-                        genres.find((e) => e.id === genreId) &&
-                        genres.find((e) => e.id === genreId).name
-                    )
-                    .join(" ● ")}
+                  {media.genre_ids &&
+                    [...media.genre_ids]
+                      .splice(0, 2)
+                      .map(
+                        (genreId) =>
+                          genres.find((e) => e.id === genreId) &&
+                          genres.find((e) => e.id === genreId).name
+                      )
+                      .join(" ● ")}
                 </Typography>
               </Stack>
             </Box>

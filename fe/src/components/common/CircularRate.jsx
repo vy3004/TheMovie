@@ -1,21 +1,6 @@
-import React, { useEffect, useState } from "react";
 import { Box, CircularProgress, Typography } from "@mui/material";
 
 const CircularRate = ({ value }) => {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((prevProgress) =>
-        prevProgress >= value * 10 ? value * 10 : prevProgress + value * 10
-      );
-    }, 800);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, [value]);
-
   return (
     <Box
       sx={{
@@ -26,7 +11,7 @@ const CircularRate = ({ value }) => {
     >
       <CircularProgress
         variant="determinate"
-        value={progress}
+        value={value * 10}
         color="success"
         size={50}
       />
